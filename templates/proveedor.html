@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Inv. Nissan</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>     
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="/static/img/user-logo.png" alt="img-user">
+                <p>Nombre de Usuario</p>
+            </div>
+            
+            <!-- inicio menu bootstrap -->
+            <ul class="list-unstyled components">                
+                <li><a href="/templates/dashboard.html">Dashboard</a></li>
+                <li><a href="/templates/usuario.html">Usuarios</a></li>
+                <li><a href="/templates/producto.html">Productos </a></li>
+                <li><a href="/templates/proveedor.html">Proveedores </a></li>               
+            </ul>
+            <!-- fin menu bootstrap -->
+            
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-danger">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                </div>
+            </nav>
+
+            <h2>Proveedores</h2>
+            <div class="line"></div>
+
+            <div class="d-inline-flex p-2"><button type="button" class="btn btn-success"
+                data-toggle="modal" data-target="#createModal">Crear</button></div>
+
+            <div class="line"></div>
+
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Razón Social</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>NIT</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Airi Satou</td>
+                        <td>Av 867</td>
+                        <td>Tokyo</td>
+                        <td>900.156.405</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Airi Satou" data-book-id1="Av 867"
+                                data-book-id2="Tokyo" data-book-id3="900.156.405" data-book-id4="650-918-14-29"
+                                data-book-id5="Airi"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Airi Satou" data-book-id1="Av 867"
+                                data-book-id2="Tokyo" data-book-id3="900.156.405" data-book-id4="650-918-14-29"
+                                data-book-id5="Airi"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Airi Satou"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Angelica Ramos</td>
+                        <td>Trav 338</td>
+                        <td>London</td>
+                        <td>890.252.205</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Angelica Ramos" data-book-id1="Trav 338"
+                                data-book-id2="London" data-book-id3="890.252.205" data-book-id4="650-651-48-45"
+                                data-book-id5="Angelica"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Angelica Ramos" data-book-id1="Trav 338"
+                                data-book-id2="London" data-book-id3="890.252.205" data-book-id4="650-651-48-45"
+                                data-book-id5="Angelica"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Angelica Ramos"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ashton Cox</td>
+                        <td>C 497</td>
+                        <td>San Francisco</td>
+                        <td>890.351.005</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Ashton Cox" data-book-id1="C 497"
+                                data-book-id2="San Francisco" data-book-id3="890.351.005" data-book-id4="650-401-41-88"
+                                data-book-id5="Ashton"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Ashton Cox" data-book-id1="C 497"
+                                data-book-id2="San Francisco" data-book-id3="890.351.005" data-book-id4="650-401-41-88"
+                                data-book-id5="Ashton"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Ashton Cox"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Brielle Williamson</td>
+                        <td>Av 602</td>
+                        <td>New York</td>
+                        <td>902.421.789</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Brielle Williamson" data-book-id1="Av 602"
+                                data-book-id2="New York" data-book-id3="902.421.789" data-book-id4="650-960-22-41"
+                                data-book-id5="Brielle"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Brielle Williamson" data-book-id1="Av 602"
+                                data-book-id2="New York" data-book-id3="902.421.789" data-book-id4="650-960-22-41"
+                                data-book-id5="Brielle"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Brielle Williamson"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cedric Kelly</td>
+                        <td>Trav 527</td>
+                        <td>Edinburgh</td>
+                        <td>891.351.205</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Cedric Kelly" data-book-id1="Trav 527"
+                                data-book-id2="Edinburgh" data-book-id3="891.351.205" data-book-id4="650-288-88-75"
+                                data-book-id5="Cedric"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Cedric Kelly" data-book-id1="Trav 527"
+                                data-book-id2="Edinburgh" data-book-id3="891.351.205" data-book-id4="650-288-88-75"
+                                data-book-id5="Cedric"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Cedric Kelly"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Colleen Hurst</td>
+                        <td>C 48</td>
+                        <td>San Francisco</td>
+                        <td>897.985.951</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Colleen Hurst" data-book-id1="C 48"
+                                data-book-id2="San Francisco" data-book-id3="897.985.951" data-book-id4="650-840-65-29"
+                                data-book-id5="Colleen"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Colleen Hurst" data-book-id1="C 48"
+                                data-book-id2="San Francisco" data-book-id3="897.985.951" data-book-id4="650-840-65-29"
+                                data-book-id5="Colleen"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Colleen Hurst"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Garrett Winters</td>
+                        <td>Av 58</td>
+                        <td>Tokyo</td>
+                        <td>902.510.654</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Garrett Winters" data-book-id1="Av 58"
+                                data-book-id2="Tokyo" data-book-id3="902.510.654" data-book-id4="650-823-73-76"
+                                data-book-id5="Garrett"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Garrett Winters" data-book-id1="Av 58"
+                                data-book-id2="Tokyo" data-book-id3="902.510.654" data-book-id4="650-823-73-76"
+                                data-book-id5="Garrett"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Garrett Winters"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Herrod Chandler</td>
+                        <td>Trav 418</td>
+                        <td>San Francisco</td>
+                        <td>890.879.528</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Herrod Chandler" data-book-id1="Trav 418"
+                                data-book-id2="San Francisco" data-book-id3="890.879.528" data-book-id4="650-169-60-16"
+                                data-book-id5="Herrod"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Herrod Chandler" data-book-id1="Trav 418"
+                                data-book-id2="San Francisco" data-book-id3="890.879.528" data-book-id4="650-169-60-16"
+                                data-book-id5="Herrod"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Herrod Chandler"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jena Gaines</td>
+                        <td>C 335</td>
+                        <td>London</td>
+                        <td>890.831.792</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Jena Gaines" data-book-id1="C 335"
+                                data-book-id2="London" data-book-id3="890.831.792" data-book-id4="650-876-68-10"
+                                data-book-id5="Jena"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Jena Gaines" data-book-id1="C 335"
+                                data-book-id2="London" data-book-id3="890.831.792" data-book-id4="650-876-68-10"
+                                data-book-id5="Jena"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Jena Gaines"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Quinn Flynn</td>
+                        <td>Av 454</td>
+                        <td>Edinburgh</td>
+                        <td>890.354.147</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Quinn Flynn" data-book-id1="Av 454"
+                                data-book-id2="Edinburgh" data-book-id3="890.354.147" data-book-id4="650-238-72-78"
+                                data-book-id5="Quinn"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Quinn Flynn" data-book-id1="Av 454"
+                                data-book-id2="Edinburgh" data-book-id3="890.354.147" data-book-id4="650-238-72-78"
+                                data-book-id5="Quinn"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Quinn Flynn"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Rhona Davidson</td>
+                        <td>Trav 523</td>
+                        <td>Tokyo</td>
+                        <td>890.753.268</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Rhona Davidson" data-book-id1="Trav 523"
+                                data-book-id2="Tokyo" data-book-id3="890.753.268" data-book-id4="650-790-92-93"
+                                data-book-id5="Rhona"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Rhona Davidson" data-book-id1="Trav 523"
+                                data-book-id2="Tokyo" data-book-id3="890.753.268" data-book-id4="650-790-92-93"
+                                data-book-id5="Rhona"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Rhona Davidson"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sonya Frost</td>
+                        <td>C 978</td>
+                        <td>Edinburgh</td>
+                        <td>903.758.842</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Sonya Frost" data-book-id1="C 978"
+                                data-book-id2="Edinburgh" data-book-id3="903.758.842" data-book-id4="650-128-32-87"
+                                data-book-id5="Sonya"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Sonya Frost" data-book-id1="C 978"
+                                data-book-id2="Edinburgh" data-book-id3="903.758.842" data-book-id4="650-128-32-87"
+                                data-book-id5="Sonya"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Sonya Frost"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tiger Nixon</td>
+                        <td>Av 803</td>
+                        <td>Edinburgh</td>
+                        <td>890.351.005</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#viewModal" data-book-id0="Tiger Nixon" data-book-id1="Av 803"
+                                data-book-id2="Edinburgh" data-book-id3="890.351.005" data-book-id4="650-150-38-62"
+                                data-book-id5="Tiger"><i class="fas fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#updateModal" data-book-id0="Tiger Nixon" data-book-id1="Av 803"
+                                data-book-id2="Edinburgh" data-book-id3="890.351.005" data-book-id4="650-150-38-62"
+                                data-book-id5="Tiger"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal" data-book-id0="Tiger Nixon"><i
+                                    class="fas fa-minus-circle"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Razón Social</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>NIT</th>
+                        <th>Acciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+
+    <!-- Modal Create-->
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createModalLongTitle">Crear Proveedor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nit">NIT</label>
+                            <input type="text" class="form-control" name="nit" id="nit" placeholder="NIT">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Razón Social</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre"
+                                placeholder="Razón Social">
+                        </div>
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad</label>
+                            <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad">
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" class="form-control" name="direccion" id="direccion"
+                                placeholder="direccion">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" class="form-control" name="telefono" id="telefono"
+                                placeholder="telefono">
+                        </div>
+                        <div class="form-group">
+                            <label for="contacto">Contacto</label>
+                            <input type="text" class="form-control" name="contacto" id="contacto"
+                                placeholder="contacto">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="executeSw('Creación Proveedor')">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal View -->
+    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewModalLongTitle">Ver Proveedor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nit">NIT</label>
+                            <input type="text" class="form-control" name="nit" id="nit" placeholder="NIT" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Razón Social</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre"
+                                placeholder="Razón Social" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad</label>
+                            <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" class="form-control" name="direccion" id="direccion"
+                                placeholder="direccion" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" class="form-control" name="telefono" id="telefono"
+                                placeholder="telefono" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="contacto">Contacto</label>
+                            <input type="text" class="form-control" name="contacto" id="contacto"
+                                placeholder="contacto" readonly>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update -->
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLongTitle">Actualizar Proveedor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nit">NIT</label>
+                            <input type="text" class="form-control" name="nit" id="nit" placeholder="NIT">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Razón Social</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre"
+                                placeholder="Razón Social">
+                        </div>
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad</label>
+                            <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad">
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" class="form-control" name="direccion" id="direccion"
+                                placeholder="direccion">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" class="form-control" name="telefono" id="telefono"
+                                placeholder="telefono">
+                        </div>
+                        <div class="form-group">
+                            <label for="contacto">Contacto</label>
+                            <input type="text" class="form-control" name="contacto" id="contacto"
+                                placeholder="contacto">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="executeSw('Actualizar Proveedor')">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Delete -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLongTitle">Inactivar Proveedor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nombre">Razón Social</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Razón Social"
+                                readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Esta seguro de inactivar este proveedor?</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+
+            $('#example').DataTable();
+        });
+
+        function executeSw(title) {
+            Swal.fire(title, "La grabación se realizo satisfactoriamente!", "success");
+        }
+
+        $('#viewModal').on('show.bs.modal', function (e) {
+            var bookId0 = $(e.relatedTarget).data('book-id0');
+            var bookId1 = $(e.relatedTarget).data('book-id1');
+            var bookId2 = $(e.relatedTarget).data('book-id2');
+            var bookId3 = $(e.relatedTarget).data('book-id3');
+            var bookId4 = $(e.relatedTarget).data('book-id4');
+            var bookId5 = $(e.relatedTarget).data('book-id5');
+            $(e.currentTarget).find('input[name="nombre"]').val(bookId0);
+            $(e.currentTarget).find('input[name="direccion"]').val(bookId1);
+            $(e.currentTarget).find('input[name="ciudad"]').val(bookId2);
+            $(e.currentTarget).find('input[name="nit"]').val(bookId3);
+            $(e.currentTarget).find('input[name="telefono"]').val(bookId4);
+            $(e.currentTarget).find('input[name="contacto"]').val(bookId5);
+        });
+
+        $('#updateModal').on('show.bs.modal', function (e) {
+            var bookId0 = $(e.relatedTarget).data('book-id0');
+            var bookId1 = $(e.relatedTarget).data('book-id1');
+            var bookId2 = $(e.relatedTarget).data('book-id2');
+            var bookId3 = $(e.relatedTarget).data('book-id3');
+            var bookId4 = $(e.relatedTarget).data('book-id4');
+            var bookId5 = $(e.relatedTarget).data('book-id5');
+            $(e.currentTarget).find('input[name="nombre"]').val(bookId0);
+            $(e.currentTarget).find('input[name="direccion"]').val(bookId1);
+            $(e.currentTarget).find('input[name="ciudad"]').val(bookId2);
+            $(e.currentTarget).find('input[name="nit"]').val(bookId3);
+            $(e.currentTarget).find('input[name="telefono"]').val(bookId4);
+            $(e.currentTarget).find('input[name="contacto"]').val(bookId5);
+        });
+
+        $('#createModal').on('show.bs.modal', function (e) {
+            $(e.currentTarget).find('input[name="nombre"]').val('');
+            $(e.currentTarget).find('input[name="direccion"]').val('');
+            $(e.currentTarget).find('input[name="ciudad"]').val('');
+            $(e.currentTarget).find('input[name="nit"]').val('');
+            $(e.currentTarget).find('input[name="telefono"]').val('');
+            $(e.currentTarget).find('input[name="contacto"]').val('');
+        });        
+
+        $('#deleteModal').on('show.bs.modal', function (e) {
+            var bookId0 = $(e.relatedTarget).data('book-id0');
+            $(e.currentTarget).find('input[name="nombre"]').val(bookId0);
+        });
+
+    </script>
+</body>
+
+</html> 
