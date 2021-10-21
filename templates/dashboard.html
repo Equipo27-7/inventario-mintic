@@ -1,302 +1,237 @@
-<!DOCTYPE html>
-<html>
+{% extends "base_template.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% block title %}
+Sistema de Inventario Nissan - Dashboard
+{% endblock %}
 
-    <title>Sistema de Inventario - Dashboard</title>
-
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../static/css/style.css">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-        crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-        crossorigin="anonymous"></script>
-        
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>     
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-
-</head>
-
-<body>
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img src="/static/img/user-logo.png" alt="img-user">
-                <p>Nombre de Usuario</p>
-            </div>
-            
-            <!-- inicio menu bootstrap -->
-            <ul class="list-unstyled components">                
-                <li><a href="/templates/dashboard.html">Dashboard</a></li>
-                <li><a href="/templates/usuario.html">Usuarios</a></li>
-                <li><a href="/templates/producto.html">Productos </a></li>
-                <li><a href="/templates/proveedor.html">Proveedores </a></li>                
-            </ul>
-            <!-- fin menu bootstrap -->
-            
-        </nav>
-
-        <!-- Page Content  -->
-        <div id="content">  
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-danger">
-                        <i class="fas fa-align-left"></i>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                </div>
-            </nav>
-
-            <div class="content-1">
-                <div id="top_x_div" style="width: 300px; height: 360px;"></div>
-                <div style="width: 200px;"></div>
-                <div id="piechart" style="width: 400px; height: 360px;"></div>
-            </div>
-
-            <br><br>
-            <h2>Productos Próximos al límite de inventario permitido</h2>
-            <div class="line"></div>
-
-            <br>
-
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Descripción</th>
-                        <th>Undidad</th>
-                        <th>Cant. Disponible</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Pisos De Goma Vagoneta Nissan N-Patrol 8</td>
-                        <td>UND</td>
-                        <td>43</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="Pisos De Goma Vagoneta Nissan N-Patrol 8"
-                                data-book-id1="UND" data-book-id2="122108" data-book-id3="35" data-book-id4="43"
-                                data-book-id5="Airi Satou"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="Pisos De Goma Vagoneta Nissan N-Patrol 8"
-                                data-book-id1="UND" data-book-id2="122108" data-book-id3="35" data-book-id4="43"
-                                data-book-id5="Airi Satou"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="Pisos De Goma Vagoneta Nissan N-Patrol 8"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Flasher Electronico 12V N/P:If353 Camioneta Nissan</td>
-                        <td>UND</td>
-                        <td>106</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal"
-                                data-book-id0="Flasher Electronico 12V N/P:If353 Camioneta Nissan" data-book-id1="UND"
-                                data-book-id2="212885" data-book-id3="98" data-book-id4="106"
-                                data-book-id5="Angelica Ramos"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal"
-                                data-book-id0="Flasher Electronico 12V N/P:If353 Camioneta Nissan" data-book-id1="UND"
-                                data-book-id2="212885" data-book-id3="98" data-book-id4="106"
-                                data-book-id5="Angelica Ramos"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal"
-                                data-book-id0="Flasher Electronico 12V N/P:If353 Camioneta Nissan"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cremallera Nissan Urban 1</td>
-                        <td>UND</td>
-                        <td>30</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="Cremallera Nissan Urban 1" data-book-id1="UND"
-                                data-book-id2="184418" data-book-id3="22" data-book-id4="30"
-                                data-book-id5="Ashton Cox"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="Cremallera Nissan Urban 1" data-book-id1="UND"
-                                data-book-id2="184418" data-book-id3="22" data-book-id4="30"
-                                data-book-id5="Ashton Cox"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="Cremallera Nissan Urban 1"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Alternador 100 Amp 23100-Au400 X-Trail 1</td>
-                        <td>UND</td>
-                        <td>49</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="Alternador 100 Amp 23100-Au400 X-Trail 1"
-                                data-book-id1="UND" data-book-id2="26617" data-book-id3="41" data-book-id4="49"
-                                data-book-id5="Brielle Williamson"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="Alternador 100 Amp 23100-Au400 X-Trail 1"
-                                data-book-id1="UND" data-book-id2="26617" data-book-id3="41" data-book-id4="49"
-                                data-book-id5="Brielle Williamson"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="Alternador 100 Amp 23100-Au400 X-Trail 1"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Amortiguador Delantero Derecho 54302-Eq025 X-Trail</td>
-                        <td>UND</td>
-                        <td>60</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal"
-                                data-book-id0="Amortiguador Delantero Derecho 54302-Eq025 X-Trail" data-book-id1="UND"
-                                data-book-id2="202259" data-book-id3="52" data-book-id4="60"
-                                data-book-id5="Cedric Kelly"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal"
-                                data-book-id0="Amortiguador Delantero Derecho 54302-Eq025 X-Trail" data-book-id1="UND"
-                                data-book-id2="202259" data-book-id3="52" data-book-id4="60"
-                                data-book-id5="Cedric Kelly"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal"
-                                data-book-id0="Amortiguador Delantero Derecho 54302-Eq025 X-Trail"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Amortiguador Delantero Izquier 54303-Eq025 X-Trail</td>
-                        <td>UND</td>
-                        <td>88</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal"
-                                data-book-id0="Amortiguador Delantero Izquier 54303-Eq025 X-Trail" data-book-id1="UND"
-                                data-book-id2="93373" data-book-id3="80" data-book-id4="88"
-                                data-book-id5="Colleen Hurst"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal"
-                                data-book-id0="Amortiguador Delantero Izquier 54303-Eq025 X-Trail" data-book-id1="UND"
-                                data-book-id2="93373" data-book-id3="80" data-book-id4="88"
-                                data-book-id5="Colleen Hurst"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal"
-                                data-book-id0="Amortiguador Delantero Izquier 54303-Eq025 X-Trail"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Amortiguador Trasero Lh 55303-Eq025 X-Trail 4</td>
-                        <td>UND</td>
-                        <td>106</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="Amortiguador Trasero Lh 55303-Eq025 X-Trail 4"
-                                data-book-id1="UND" data-book-id2="186107" data-book-id3="98" data-book-id4="106"
-                                data-book-id5="Garrett Winters"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="Amortiguador Trasero Lh 55303-Eq025 X-Trail 4"
-                                data-book-id1="UND" data-book-id2="186107" data-book-id3="98" data-book-id4="106"
-                                data-book-id5="Garrett Winters"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal"
-                                data-book-id0="Amortiguador Trasero Lh 55303-Eq025 X-Trail 4"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Amortiguador Trasero Rh 55302-Eq025 X-Trail 4</td>
-                        <td>UND</td>
-                        <td>37</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="Amortiguador Trasero Rh 55302-Eq025 X-Trail 4"
-                                data-book-id1="UND" data-book-id2="91711" data-book-id3="29" data-book-id4="37"
-                                data-book-id5="Herrod Chandler"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="Amortiguador Trasero Rh 55302-Eq025 X-Trail 4"
-                                data-book-id1="UND" data-book-id2="91711" data-book-id3="29" data-book-id4="37"
-                                data-book-id5="Herrod Chandler"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal"
-                                data-book-id0="Amortiguador Trasero Rh 55302-Eq025 X-Trail 4"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Anillo De Escape 20695-8H300 X-Trail 1</td>
-                        <td>UND</td>
-                        <td>104</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="Anillo De Escape 20695-8H300 X-Trail 1"
-                                data-book-id1="UND" data-book-id2="142848" data-book-id3="96" data-book-id4="104"
-                                data-book-id5="Jena Gaines"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="Anillo De Escape 20695-8H300 X-Trail 1"
-                                data-book-id1="UND" data-book-id2="142848" data-book-id3="96" data-book-id4="104"
-                                data-book-id5="Jena Gaines"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="Anillo De Escape 20695-8H300 X-Trail 1"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Anillo Escape 2 20695-8H310 X-Trail 1</td>
-                        <td>UND</td>
-                        <td>77</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="Anillo Escape 2 20695-8H310 X-Trail 1"
-                                data-book-id1="UND" data-book-id2="181887" data-book-id3="69" data-book-id4="77"
-                                data-book-id5="Quinn Flynn"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="Anillo Escape 2 20695-8H310 X-Trail 1"
-                                data-book-id1="UND" data-book-id2="181887" data-book-id3="69" data-book-id4="77"
-                                data-book-id5="Quinn Flynn"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="Anillo Escape 2 20695-8H310 X-Trail 1"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-
-                <tfoot>
-                    <tr>
-                        <th>Descripción</th>
-                        <th>Undidad</th>
-                        <th>Cant. Disponible</th>
-                        <th>Acciones</th>
-                    </tr>
-                </tfoot>
-            </table>
-
-        </div>
+{% block content %}
+    <div class="content-1">
+        <div id="top_x_div" style="width: 300px; height: 360px;"></div>
+        <div style="width: 200px;"></div>
+        <div id="piechart" style="width: 400px; height: 360px;"></div>
     </div>
 
+    <br><br>
+    <h2>Productos Próximos al límite de inventario permitido</h2>
+    <div class="line"></div>
+
+    <br>
+
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Undidad</th>
+                <th>Cant. Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pisos De Goma Vagoneta Nissan N-Patrol 8</td>
+                <td>UND</td>
+                <td>43</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal" data-book-id0="Pisos De Goma Vagoneta Nissan N-Patrol 8"
+                        data-book-id1="UND" data-book-id2="122108" data-book-id3="35" data-book-id4="43"
+                        data-book-id5="Airi Satou"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal" data-book-id0="Pisos De Goma Vagoneta Nissan N-Patrol 8"
+                        data-book-id1="UND" data-book-id2="122108" data-book-id3="35" data-book-id4="43"
+                        data-book-id5="Airi Satou"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal" data-book-id0="Pisos De Goma Vagoneta Nissan N-Patrol 8"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Flasher Electronico 12V N/P:If353 Camioneta Nissan</td>
+                <td>UND</td>
+                <td>106</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal"
+                        data-book-id0="Flasher Electronico 12V N/P:If353 Camioneta Nissan" data-book-id1="UND"
+                        data-book-id2="212885" data-book-id3="98" data-book-id4="106"
+                        data-book-id5="Angelica Ramos"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal"
+                        data-book-id0="Flasher Electronico 12V N/P:If353 Camioneta Nissan" data-book-id1="UND"
+                        data-book-id2="212885" data-book-id3="98" data-book-id4="106"
+                        data-book-id5="Angelica Ramos"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal"
+                        data-book-id0="Flasher Electronico 12V N/P:If353 Camioneta Nissan"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Cremallera Nissan Urban 1</td>
+                <td>UND</td>
+                <td>30</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal" data-book-id0="Cremallera Nissan Urban 1" data-book-id1="UND"
+                        data-book-id2="184418" data-book-id3="22" data-book-id4="30"
+                        data-book-id5="Ashton Cox"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal" data-book-id0="Cremallera Nissan Urban 1" data-book-id1="UND"
+                        data-book-id2="184418" data-book-id3="22" data-book-id4="30"
+                        data-book-id5="Ashton Cox"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal" data-book-id0="Cremallera Nissan Urban 1"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Alternador 100 Amp 23100-Au400 X-Trail 1</td>
+                <td>UND</td>
+                <td>49</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal" data-book-id0="Alternador 100 Amp 23100-Au400 X-Trail 1"
+                        data-book-id1="UND" data-book-id2="26617" data-book-id3="41" data-book-id4="49"
+                        data-book-id5="Brielle Williamson"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal" data-book-id0="Alternador 100 Amp 23100-Au400 X-Trail 1"
+                        data-book-id1="UND" data-book-id2="26617" data-book-id3="41" data-book-id4="49"
+                        data-book-id5="Brielle Williamson"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal" data-book-id0="Alternador 100 Amp 23100-Au400 X-Trail 1"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Amortiguador Delantero Derecho 54302-Eq025 X-Trail</td>
+                <td>UND</td>
+                <td>60</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal"
+                        data-book-id0="Amortiguador Delantero Derecho 54302-Eq025 X-Trail" data-book-id1="UND"
+                        data-book-id2="202259" data-book-id3="52" data-book-id4="60"
+                        data-book-id5="Cedric Kelly"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal"
+                        data-book-id0="Amortiguador Delantero Derecho 54302-Eq025 X-Trail" data-book-id1="UND"
+                        data-book-id2="202259" data-book-id3="52" data-book-id4="60"
+                        data-book-id5="Cedric Kelly"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal"
+                        data-book-id0="Amortiguador Delantero Derecho 54302-Eq025 X-Trail"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Amortiguador Delantero Izquier 54303-Eq025 X-Trail</td>
+                <td>UND</td>
+                <td>88</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal"
+                        data-book-id0="Amortiguador Delantero Izquier 54303-Eq025 X-Trail" data-book-id1="UND"
+                        data-book-id2="93373" data-book-id3="80" data-book-id4="88"
+                        data-book-id5="Colleen Hurst"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal"
+                        data-book-id0="Amortiguador Delantero Izquier 54303-Eq025 X-Trail" data-book-id1="UND"
+                        data-book-id2="93373" data-book-id3="80" data-book-id4="88"
+                        data-book-id5="Colleen Hurst"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal"
+                        data-book-id0="Amortiguador Delantero Izquier 54303-Eq025 X-Trail"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Amortiguador Trasero Lh 55303-Eq025 X-Trail 4</td>
+                <td>UND</td>
+                <td>106</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal" data-book-id0="Amortiguador Trasero Lh 55303-Eq025 X-Trail 4"
+                        data-book-id1="UND" data-book-id2="186107" data-book-id3="98" data-book-id4="106"
+                        data-book-id5="Garrett Winters"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal" data-book-id0="Amortiguador Trasero Lh 55303-Eq025 X-Trail 4"
+                        data-book-id1="UND" data-book-id2="186107" data-book-id3="98" data-book-id4="106"
+                        data-book-id5="Garrett Winters"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal"
+                        data-book-id0="Amortiguador Trasero Lh 55303-Eq025 X-Trail 4"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Amortiguador Trasero Rh 55302-Eq025 X-Trail 4</td>
+                <td>UND</td>
+                <td>37</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal" data-book-id0="Amortiguador Trasero Rh 55302-Eq025 X-Trail 4"
+                        data-book-id1="UND" data-book-id2="91711" data-book-id3="29" data-book-id4="37"
+                        data-book-id5="Herrod Chandler"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal" data-book-id0="Amortiguador Trasero Rh 55302-Eq025 X-Trail 4"
+                        data-book-id1="UND" data-book-id2="91711" data-book-id3="29" data-book-id4="37"
+                        data-book-id5="Herrod Chandler"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal"
+                        data-book-id0="Amortiguador Trasero Rh 55302-Eq025 X-Trail 4"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Anillo De Escape 20695-8H300 X-Trail 1</td>
+                <td>UND</td>
+                <td>104</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal" data-book-id0="Anillo De Escape 20695-8H300 X-Trail 1"
+                        data-book-id1="UND" data-book-id2="142848" data-book-id3="96" data-book-id4="104"
+                        data-book-id5="Jena Gaines"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal" data-book-id0="Anillo De Escape 20695-8H300 X-Trail 1"
+                        data-book-id1="UND" data-book-id2="142848" data-book-id3="96" data-book-id4="104"
+                        data-book-id5="Jena Gaines"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal" data-book-id0="Anillo De Escape 20695-8H300 X-Trail 1"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Anillo Escape 2 20695-8H310 X-Trail 1</td>
+                <td>UND</td>
+                <td>77</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#viewModal" data-book-id0="Anillo Escape 2 20695-8H310 X-Trail 1"
+                        data-book-id1="UND" data-book-id2="181887" data-book-id3="69" data-book-id4="77"
+                        data-book-id5="Quinn Flynn"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#updateModal" data-book-id0="Anillo Escape 2 20695-8H310 X-Trail 1"
+                        data-book-id1="UND" data-book-id2="181887" data-book-id3="69" data-book-id4="77"
+                        data-book-id5="Quinn Flynn"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteModal" data-book-id0="Anillo Escape 2 20695-8H310 X-Trail 1"><i
+                            class="fas fa-minus-circle"></i></button>
+                </td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>Descripción</th>
+                <th>Undidad</th>
+                <th>Cant. Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
+
+{% block modals %}
     <!-- Modal Create-->
     <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalTitle"
         aria-hidden="true">
@@ -510,30 +445,9 @@
             </div>
         </div>
     </div>
-
+{% endblock %}
     
 </body>
-
-<!-- jQuery CDN - Slim version (=without AJAX) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous"></script>
-<!-- Popper.JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-crossorigin="anonymous"></script>
-<!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-crossorigin="anonymous"></script>
-<!-- jQuery Custom Scroller CDN -->
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-
-
 
 <script type="text/javascript">
 $(document).ready(function () {
