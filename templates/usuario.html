@@ -1,773 +1,1396 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %} 
+{% block content %}
+<h2>Usuarios</h2>
+<div class="line"></div>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<div class="d-inline-flex p-2">
+  <button
+    type="button"
+    class="btn btn-success"
+    data-toggle="modal"
+    data-target="#createModal"
+  >
+    Crear
+  </button>
+</div>
 
-    <title>Inv. Nissan</title>
+<div class="line"></div>
 
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../static/css/style.css">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<table
+  id="example"
+  class="table table-striped table-bordered"
+  style="width: 100%"
+>
+  <thead>
+    <tr>
+      <th>E-mail</th>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>aespinz@hotmail.com</td>
+      <td>ESPINOZA ANDREA</td>
+      <td>Calle 3 N 85</td>
+      <td>ROOT</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="aespinz@hotmail.com"
+          data-book-id1="ESPINOZA ANDREA"
+          data-book-id2="22268"
+          data-book-id3="Calle 3 N 85"
+          data-book-id4="650-918-14-29"
+          data-book-id5="ROOT"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="aespinz@hotmail.com"
+          data-book-id1="ESPINOZA ANDREA"
+          data-book-id2="22268"
+          data-book-id3="Calle 3 N 85"
+          data-book-id4="650-918-14-29"
+          data-book-id5="ROOT"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="ESPINOZA ANDREA"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>alexus3@hotmail.com</td>
+      <td>AGUILERA FRANCISCO</td>
+      <td>Cra 9 N 0</td>
+      <td>ROOT</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="alexus3@hotmail.com"
+          data-book-id1="AGUILERA FRANCISCO"
+          data-book-id2="33595"
+          data-book-id3="Cra 9 N 0"
+          data-book-id4="650-651-48-45"
+          data-book-id5="ROOT"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="alexus3@hotmail.com"
+          data-book-id1="AGUILERA FRANCISCO"
+          data-book-id2="33595"
+          data-book-id3="Cra 9 N 0"
+          data-book-id4="650-651-48-45"
+          data-book-id5="ROOT"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="AGUILERA FRANCISCO"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>allicamposv@hotmail.</td>
+      <td>CAMPOS ALICIA</td>
+      <td>Diag 8 N 7</td>
+      <td>ADMIN</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="allicamposv@hotmail."
+          data-book-id1="CAMPOS ALICIA"
+          data-book-id2="31351"
+          data-book-id3="Diag 8 N 7"
+          data-book-id4="650-401-41-88"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="allicamposv@hotmail."
+          data-book-id1="CAMPOS ALICIA"
+          data-book-id2="31351"
+          data-book-id3="Diag 8 N 7"
+          data-book-id4="650-401-41-88"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="CAMPOS ALICIA"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>almendrita203@hotmai</td>
+      <td>MERINO CAROLINA</td>
+      <td>Transv 1 N 8</td>
+      <td>ADMIN</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="almendrita203@hotmai"
+          data-book-id1="MERINO CAROLINA"
+          data-book-id2="64836"
+          data-book-id3="Transv 1 N 8"
+          data-book-id4="650-960-22-41"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="almendrita203@hotmai"
+          data-book-id1="MERINO CAROLINA"
+          data-book-id2="64836"
+          data-book-id3="Transv 1 N 8"
+          data-book-id4="650-960-22-41"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="MERINO CAROLINA"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>alvaro.espoz@gmail.c</td>
+      <td>ESPOZ ALVARO</td>
+      <td>Calle 3 N 7</td>
+      <td>ADMIN</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="alvaro.espoz@gmail.c"
+          data-book-id1="ESPOZ ALVARO"
+          data-book-id2="17304"
+          data-book-id3="Calle 3 N 7"
+          data-book-id4="650-918-14-30"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="alvaro.espoz@gmail.c"
+          data-book-id1="ESPOZ ALVARO"
+          data-book-id2="17304"
+          data-book-id3="Calle 3 N 7"
+          data-book-id4="650-918-14-30"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="ESPOZ ALVARO"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>amarantasol@gmail.co</td>
+      <td>LETELIER ANA MARIA</td>
+      <td>Cra 8 N 3</td>
+      <td>ADMIN</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="amarantasol@gmail.co"
+          data-book-id1="LETELIER ANA MARIA"
+          data-book-id2="32555"
+          data-book-id3="Cra 8 N 3"
+          data-book-id4="650-651-48-46"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="amarantasol@gmail.co"
+          data-book-id1="LETELIER ANA MARIA"
+          data-book-id2="32555"
+          data-book-id3="Cra 8 N 3"
+          data-book-id4="650-651-48-46"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="LETELIER ANA MARIA"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>anamariadelacarrera@</td>
+      <td>DE LA CARRERA ANA</td>
+      <td>Diag 4 N 6</td>
+      <td>ADMIN</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="anamariadelacarrera@"
+          data-book-id1="DE LA CARRERA ANA"
+          data-book-id2="37059"
+          data-book-id3="Diag 4 N 6"
+          data-book-id4="650-401-41-89"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="anamariadelacarrera@"
+          data-book-id1="DE LA CARRERA ANA"
+          data-book-id2="37059"
+          data-book-id3="Diag 4 N 6"
+          data-book-id4="650-401-41-89"
+          data-book-id5="ADMIN"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="DE LA CARRERA ANA"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>andrea.geoplanet@gma</td>
+      <td>ARAVENA ANDREA</td>
+      <td>Transv 1 N 1</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="andrea.geoplanet@gma"
+          data-book-id1="ARAVENA ANDREA"
+          data-book-id2="40724"
+          data-book-id3="Transv 1 N 1"
+          data-book-id4="650-960-22-42"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="andrea.geoplanet@gma"
+          data-book-id1="ARAVENA ANDREA"
+          data-book-id2="40724"
+          data-book-id3="Transv 1 N 1"
+          data-book-id4="650-960-22-42"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="ARAVENA ANDREA"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>c_arnes@hotmail.com</td>
+      <td>ARNES CAROLINA</td>
+      <td>Calle 4 N 7</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="c_arnes@hotmail.com"
+          data-book-id1="ARNES CAROLINA"
+          data-book-id2="83002"
+          data-book-id3="Calle 4 N 7"
+          data-book-id4="650-918-14-31"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="c_arnes@hotmail.com"
+          data-book-id1="ARNES CAROLINA"
+          data-book-id2="83002"
+          data-book-id3="Calle 4 N 7"
+          data-book-id4="650-918-14-31"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="ARNES CAROLINA"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>cabbada@gmail.com</td>
+      <td>CABBADA NICOLAS</td>
+      <td>Cra 1 N 2</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="cabbada@gmail.com"
+          data-book-id1="CABBADA NICOLAS"
+          data-book-id2="23509"
+          data-book-id3="Cra 1 N 2"
+          data-book-id4="650-651-48-47"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="cabbada@gmail.com"
+          data-book-id1="CABBADA NICOLAS"
+          data-book-id2="23509"
+          data-book-id3="Cra 1 N 2"
+          data-book-id4="650-651-48-47"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="CABBADA NICOLAS"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>campos.onfray@gmail.</td>
+      <td>CAMPOS GERMAN</td>
+      <td>Diag 2 N 3</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="campos.onfray@gmail."
+          data-book-id1="CAMPOS GERMAN"
+          data-book-id2="35727"
+          data-book-id3="Diag 2 N 3"
+          data-book-id4="650-401-41-90"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="campos.onfray@gmail."
+          data-book-id1="CAMPOS GERMAN"
+          data-book-id2="35727"
+          data-book-id3="Diag 2 N 3"
+          data-book-id4="650-401-41-90"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="CAMPOS GERMAN"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>capitanaguilera@hotm</td>
+      <td>AGUILERA LUIS</td>
+      <td>Transv 1 N 9</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="capitanaguilera@hotm"
+          data-book-id1="AGUILERA LUIS"
+          data-book-id2="32657"
+          data-book-id3="Transv 1 N 9"
+          data-book-id4="650-960-22-43"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="capitanaguilera@hotm"
+          data-book-id1="AGUILERA LUIS"
+          data-book-id2="32657"
+          data-book-id3="Transv 1 N 9"
+          data-book-id4="650-960-22-43"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="AGUILERA LUIS"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>carlosaguileram@hotm</td>
+      <td>AGUILERA CARLOS</td>
+      <td>Calle 6 N 2</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="carlosaguileram@hotm"
+          data-book-id1="AGUILERA CARLOS"
+          data-book-id2="32686"
+          data-book-id3="Calle 6 N 2"
+          data-book-id4="650-918-14-32"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="carlosaguileram@hotm"
+          data-book-id1="AGUILERA CARLOS"
+          data-book-id2="32686"
+          data-book-id3="Calle 6 N 2"
+          data-book-id4="650-918-14-32"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="AGUILERA CARLOS"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>carlosarteaga.pef@gm</td>
+      <td>ARTEAGA GERARDO</td>
+      <td>Cra 2 N 7</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="carlosarteaga.pef@gm"
+          data-book-id1="ARTEAGA GERARDO"
+          data-book-id2="25823"
+          data-book-id3="Cra 2 N 7"
+          data-book-id4="650-651-48-48"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="carlosarteaga.pef@gm"
+          data-book-id1="ARTEAGA GERARDO"
+          data-book-id2="25823"
+          data-book-id3="Cra 2 N 7"
+          data-book-id4="650-651-48-48"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="ARTEAGA GERARDO"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>carmenluzlabbe@gmail</td>
+      <td>LABBE CARMEN LUZ</td>
+      <td>Diag 2 N 9</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="carmenluzlabbe@gmail"
+          data-book-id1="LABBE CARMEN LUZ"
+          data-book-id2="46709"
+          data-book-id3="Diag 2 N 9"
+          data-book-id4="650-401-41-91"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="carmenluzlabbe@gmail"
+          data-book-id1="LABBE CARMEN LUZ"
+          data-book-id2="46709"
+          data-book-id3="Diag 2 N 9"
+          data-book-id4="650-401-41-91"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="LABBE CARMEN LUZ"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>casajuana_@hotmail.c</td>
+      <td>CASAJUANA JORGE</td>
+      <td>Transv 4 N 4</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="casajuana_@hotmail.c"
+          data-book-id1="CASAJUANA JORGE"
+          data-book-id2="13891"
+          data-book-id3="Transv 4 N 4"
+          data-book-id4="650-960-22-44"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="casajuana_@hotmail.c"
+          data-book-id1="CASAJUANA JORGE"
+          data-book-id2="13891"
+          data-book-id3="Transv 4 N 4"
+          data-book-id4="650-960-22-44"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="CASAJUANA JORGE"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>cdksfofi@hotmail.com</td>
+      <td>KELLER CHRISTOPHER</td>
+      <td>Calle 3 N 9</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="cdksfofi@hotmail.com"
+          data-book-id1="KELLER CHRISTOPHER"
+          data-book-id2="39066"
+          data-book-id3="Calle 3 N 9"
+          data-book-id4="650-918-14-33"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="cdksfofi@hotmail.com"
+          data-book-id1="KELLER CHRISTOPHER"
+          data-book-id2="39066"
+          data-book-id3="Calle 3 N 9"
+          data-book-id4="650-918-14-33"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="KELLER CHRISTOPHER"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>cfalvear@hotmail.com</td>
+      <td>FUENTES CINTIA</td>
+      <td>Cra 0 N 9</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="cfalvear@hotmail.com"
+          data-book-id1="FUENTES CINTIA"
+          data-book-id2="68790"
+          data-book-id3="Cra 0 N 9"
+          data-book-id4="650-651-48-49"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="cfalvear@hotmail.com"
+          data-book-id1="FUENTES CINTIA"
+          data-book-id2="68790"
+          data-book-id3="Cra 0 N 9"
+          data-book-id4="650-651-48-49"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="FUENTES CINTIA"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>cggreve@gmail.com</td>
+      <td>GREVE CARMEN GLORIA</td>
+      <td>Diag 3 N 6</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="cggreve@gmail.com"
+          data-book-id1="GREVE CARMEN GLORIA"
+          data-book-id2="42326"
+          data-book-id3="Diag 3 N 6"
+          data-book-id4="650-401-41-92"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="cggreve@gmail.com"
+          data-book-id1="GREVE CARMEN GLORIA"
+          data-book-id2="42326"
+          data-book-id3="Diag 3 N 6"
+          data-book-id4="650-401-41-92"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="GREVE CARMEN GLORIA"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>cibravohuerta@yahoo.</td>
+      <td>BRAVO CARLOS</td>
+      <td>Transv 5 N 7</td>
+      <td>USER</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          data-toggle="modal"
+          data-target="#viewModal"
+          data-book-id0="cibravohuerta@yahoo."
+          data-book-id1="BRAVO CARLOS"
+          data-book-id2="72560"
+          data-book-id3="Transv 5 N 7"
+          data-book-id4="650-960-22-45"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-eye"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-toggle="modal"
+          data-target="#updateModal"
+          data-book-id0="cibravohuerta@yahoo."
+          data-book-id1="BRAVO CARLOS"
+          data-book-id2="72560"
+          data-book-id3="Transv 5 N 7"
+          data-book-id4="650-960-22-45"
+          data-book-id5="USER"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          data-book-id0="BRAVO CARLOS"
+        >
+          <i class="fas fa-minus-circle"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>E-mail</th>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </tfoot>
+</table>
 
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-        crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-        crossorigin="anonymous"></script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-
-</head>
-
-<body>
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img src="/static/img/user-logo.png" alt="img-user">
-                <p>Nombre de Usuario</p>
+<!-- Modal Create-->
+<div
+  class="modal fade"
+  id="createModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="createModalTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createModalLongTitle">Crear Usuario</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="POST" action="/signup" id="frm_create" name="frm_create">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="c_email">E-mail</label>
+                <input
+                type="text"
+                class="form-control"
+                name="c_email"
+                id="c_email"
+                placeholder="E-mail..."
+                />
             </div>
-            
-            <!-- inicio menu bootstrap -->
-            <ul class="list-unstyled components">                
-                <li><a href="/templates/dashboard.html">Dashboard</a></li>
-                <li><a href="/templates/usuario.html">Usuarios</a></li>
-                <li><a href="/templates/producto.html">Productos </a></li>
-                <li><a href="/templates/proveedor.html">Proveedores </a></li>               
-            </ul>
-            <!-- fin menu bootstrap -->
-            
-        </nav>
-
-        <!-- Page Content  -->
-        <div id="content">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-danger">
-                        <i class="fas fa-align-left"></i>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                </div>
-            </nav>
-
-            <h2>Usuarios</h2>
-            <div class="line"></div>
-
-            <div class="d-inline-flex p-2"><button type="button" class="btn btn-success" data-toggle="modal"
-                    data-target="#createModal">Crear</button></div>
-
-            <div class="line"></div>
-
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>E-mail</th>
-                        <th>Nombre</th>
-                        <th>Dirección</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>aespinz@hotmail.com</td>
-                        <td>ESPINOZA ANDREA</td>
-                        <td>Calle 3 N 85</td>
-                        <td>ROOT</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="aespinz@hotmail.com"
-                                data-book-id1="ESPINOZA ANDREA" data-book-id2="22268" data-book-id3="Calle 3 N 85"
-                                data-book-id4="650-918-14-29" data-book-id5="ROOT"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="aespinz@hotmail.com"
-                                data-book-id1="ESPINOZA ANDREA" data-book-id2="22268" data-book-id3="Calle 3 N 85"
-                                data-book-id4="650-918-14-29" data-book-id5="ROOT"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="ESPINOZA ANDREA"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>alexus3@hotmail.com</td>
-                        <td>AGUILERA FRANCISCO</td>
-                        <td>Cra 9 N 0</td>
-                        <td>ROOT</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="alexus3@hotmail.com"
-                                data-book-id1="AGUILERA FRANCISCO" data-book-id2="33595" data-book-id3="Cra 9 N 0"
-                                data-book-id4="650-651-48-45" data-book-id5="ROOT"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="alexus3@hotmail.com"
-                                data-book-id1="AGUILERA FRANCISCO" data-book-id2="33595" data-book-id3="Cra 9 N 0"
-                                data-book-id4="650-651-48-45" data-book-id5="ROOT"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="AGUILERA FRANCISCO"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>allicamposv@hotmail.</td>
-                        <td>CAMPOS ALICIA</td>
-                        <td>Diag 8 N 7</td>
-                        <td>ADMIN</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="allicamposv@hotmail."
-                                data-book-id1="CAMPOS ALICIA" data-book-id2="31351" data-book-id3="Diag 8 N 7"
-                                data-book-id4="650-401-41-88" data-book-id5="ADMIN"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="allicamposv@hotmail."
-                                data-book-id1="CAMPOS ALICIA" data-book-id2="31351" data-book-id3="Diag 8 N 7"
-                                data-book-id4="650-401-41-88" data-book-id5="ADMIN"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="CAMPOS ALICIA"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>almendrita203@hotmai</td>
-                        <td>MERINO CAROLINA</td>
-                        <td>Transv 1 N 8</td>
-                        <td>ADMIN</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="almendrita203@hotmai"
-                                data-book-id1="MERINO CAROLINA" data-book-id2="64836" data-book-id3="Transv 1 N 8"
-                                data-book-id4="650-960-22-41" data-book-id5="ADMIN"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="almendrita203@hotmai"
-                                data-book-id1="MERINO CAROLINA" data-book-id2="64836" data-book-id3="Transv 1 N 8"
-                                data-book-id4="650-960-22-41" data-book-id5="ADMIN"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="MERINO CAROLINA"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>alvaro.espoz@gmail.c</td>
-                        <td>ESPOZ ALVARO</td>
-                        <td>Calle 3 N 7</td>
-                        <td>ADMIN</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="alvaro.espoz@gmail.c"
-                                data-book-id1="ESPOZ ALVARO" data-book-id2="17304" data-book-id3="Calle 3 N 7"
-                                data-book-id4="650-918-14-30" data-book-id5="ADMIN"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="alvaro.espoz@gmail.c"
-                                data-book-id1="ESPOZ ALVARO" data-book-id2="17304" data-book-id3="Calle 3 N 7"
-                                data-book-id4="650-918-14-30" data-book-id5="ADMIN"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="ESPOZ ALVARO"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>amarantasol@gmail.co</td>
-                        <td>LETELIER ANA MARIA</td>
-                        <td>Cra 8 N 3</td>
-                        <td>ADMIN</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="amarantasol@gmail.co"
-                                data-book-id1="LETELIER ANA MARIA" data-book-id2="32555" data-book-id3="Cra 8 N 3"
-                                data-book-id4="650-651-48-46" data-book-id5="ADMIN"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="amarantasol@gmail.co"
-                                data-book-id1="LETELIER ANA MARIA" data-book-id2="32555" data-book-id3="Cra 8 N 3"
-                                data-book-id4="650-651-48-46" data-book-id5="ADMIN"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="LETELIER ANA MARIA"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>anamariadelacarrera@</td>
-                        <td>DE LA CARRERA ANA</td>
-                        <td>Diag 4 N 6</td>
-                        <td>ADMIN</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="anamariadelacarrera@"
-                                data-book-id1="DE LA CARRERA ANA" data-book-id2="37059" data-book-id3="Diag 4 N 6"
-                                data-book-id4="650-401-41-89" data-book-id5="ADMIN"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="anamariadelacarrera@"
-                                data-book-id1="DE LA CARRERA ANA" data-book-id2="37059" data-book-id3="Diag 4 N 6"
-                                data-book-id4="650-401-41-89" data-book-id5="ADMIN"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="DE LA CARRERA ANA"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>andrea.geoplanet@gma</td>
-                        <td>ARAVENA ANDREA</td>
-                        <td>Transv 1 N 1</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="andrea.geoplanet@gma"
-                                data-book-id1="ARAVENA ANDREA" data-book-id2="40724" data-book-id3="Transv 1 N 1"
-                                data-book-id4="650-960-22-42" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="andrea.geoplanet@gma"
-                                data-book-id1="ARAVENA ANDREA" data-book-id2="40724" data-book-id3="Transv 1 N 1"
-                                data-book-id4="650-960-22-42" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="ARAVENA ANDREA"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>c_arnes@hotmail.com</td>
-                        <td>ARNES CAROLINA</td>
-                        <td>Calle 4 N 7</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="c_arnes@hotmail.com"
-                                data-book-id1="ARNES CAROLINA" data-book-id2="83002" data-book-id3="Calle 4 N 7"
-                                data-book-id4="650-918-14-31" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="c_arnes@hotmail.com"
-                                data-book-id1="ARNES CAROLINA" data-book-id2="83002" data-book-id3="Calle 4 N 7"
-                                data-book-id4="650-918-14-31" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="ARNES CAROLINA"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>cabbada@gmail.com</td>
-                        <td>CABBADA NICOLAS</td>
-                        <td>Cra 1 N 2</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="cabbada@gmail.com"
-                                data-book-id1="CABBADA NICOLAS" data-book-id2="23509" data-book-id3="Cra 1 N 2"
-                                data-book-id4="650-651-48-47" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="cabbada@gmail.com"
-                                data-book-id1="CABBADA NICOLAS" data-book-id2="23509" data-book-id3="Cra 1 N 2"
-                                data-book-id4="650-651-48-47" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="CABBADA NICOLAS"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>campos.onfray@gmail.</td>
-                        <td>CAMPOS GERMAN</td>
-                        <td>Diag 2 N 3</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="campos.onfray@gmail."
-                                data-book-id1="CAMPOS GERMAN" data-book-id2="35727" data-book-id3="Diag 2 N 3"
-                                data-book-id4="650-401-41-90" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="campos.onfray@gmail."
-                                data-book-id1="CAMPOS GERMAN" data-book-id2="35727" data-book-id3="Diag 2 N 3"
-                                data-book-id4="650-401-41-90" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="CAMPOS GERMAN"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>capitanaguilera@hotm</td>
-                        <td>AGUILERA LUIS</td>
-                        <td>Transv 1 N 9</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="capitanaguilera@hotm"
-                                data-book-id1="AGUILERA LUIS" data-book-id2="32657" data-book-id3="Transv 1 N 9"
-                                data-book-id4="650-960-22-43" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="capitanaguilera@hotm"
-                                data-book-id1="AGUILERA LUIS" data-book-id2="32657" data-book-id3="Transv 1 N 9"
-                                data-book-id4="650-960-22-43" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="AGUILERA LUIS"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>carlosaguileram@hotm</td>
-                        <td>AGUILERA CARLOS</td>
-                        <td>Calle 6 N 2</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="carlosaguileram@hotm"
-                                data-book-id1="AGUILERA CARLOS" data-book-id2="32686" data-book-id3="Calle 6 N 2"
-                                data-book-id4="650-918-14-32" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="carlosaguileram@hotm"
-                                data-book-id1="AGUILERA CARLOS" data-book-id2="32686" data-book-id3="Calle 6 N 2"
-                                data-book-id4="650-918-14-32" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="AGUILERA CARLOS"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>carlosarteaga.pef@gm</td>
-                        <td>ARTEAGA GERARDO</td>
-                        <td>Cra 2 N 7</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="carlosarteaga.pef@gm"
-                                data-book-id1="ARTEAGA GERARDO" data-book-id2="25823" data-book-id3="Cra 2 N 7"
-                                data-book-id4="650-651-48-48" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="carlosarteaga.pef@gm"
-                                data-book-id1="ARTEAGA GERARDO" data-book-id2="25823" data-book-id3="Cra 2 N 7"
-                                data-book-id4="650-651-48-48" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="ARTEAGA GERARDO"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>carmenluzlabbe@gmail</td>
-                        <td>LABBE CARMEN LUZ</td>
-                        <td>Diag 2 N 9</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="carmenluzlabbe@gmail"
-                                data-book-id1="LABBE CARMEN LUZ" data-book-id2="46709" data-book-id3="Diag 2 N 9"
-                                data-book-id4="650-401-41-91" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="carmenluzlabbe@gmail"
-                                data-book-id1="LABBE CARMEN LUZ" data-book-id2="46709" data-book-id3="Diag 2 N 9"
-                                data-book-id4="650-401-41-91" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="LABBE CARMEN LUZ"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>casajuana_@hotmail.c</td>
-                        <td>CASAJUANA JORGE</td>
-                        <td>Transv 4 N 4</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="casajuana_@hotmail.c"
-                                data-book-id1="CASAJUANA JORGE" data-book-id2="13891" data-book-id3="Transv 4 N 4"
-                                data-book-id4="650-960-22-44" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="casajuana_@hotmail.c"
-                                data-book-id1="CASAJUANA JORGE" data-book-id2="13891" data-book-id3="Transv 4 N 4"
-                                data-book-id4="650-960-22-44" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="CASAJUANA JORGE"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>cdksfofi@hotmail.com</td>
-                        <td>KELLER CHRISTOPHER</td>
-                        <td>Calle 3 N 9</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="cdksfofi@hotmail.com"
-                                data-book-id1="KELLER CHRISTOPHER" data-book-id2="39066" data-book-id3="Calle 3 N 9"
-                                data-book-id4="650-918-14-33" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="cdksfofi@hotmail.com"
-                                data-book-id1="KELLER CHRISTOPHER" data-book-id2="39066" data-book-id3="Calle 3 N 9"
-                                data-book-id4="650-918-14-33" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="KELLER CHRISTOPHER"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>cfalvear@hotmail.com</td>
-                        <td>FUENTES CINTIA</td>
-                        <td>Cra 0 N 9</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="cfalvear@hotmail.com"
-                                data-book-id1="FUENTES CINTIA" data-book-id2="68790" data-book-id3="Cra 0 N 9"
-                                data-book-id4="650-651-48-49" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="cfalvear@hotmail.com"
-                                data-book-id1="FUENTES CINTIA" data-book-id2="68790" data-book-id3="Cra 0 N 9"
-                                data-book-id4="650-651-48-49" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="FUENTES CINTIA"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>cggreve@gmail.com</td>
-                        <td>GREVE CARMEN GLORIA</td>
-                        <td>Diag 3 N 6</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="cggreve@gmail.com"
-                                data-book-id1="GREVE CARMEN GLORIA" data-book-id2="42326" data-book-id3="Diag 3 N 6"
-                                data-book-id4="650-401-41-92" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="cggreve@gmail.com"
-                                data-book-id1="GREVE CARMEN GLORIA" data-book-id2="42326" data-book-id3="Diag 3 N 6"
-                                data-book-id4="650-401-41-92" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="GREVE CARMEN GLORIA"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>cibravohuerta@yahoo.</td>
-                        <td>BRAVO CARLOS</td>
-                        <td>Transv 5 N 7</td>
-                        <td>USER</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#viewModal" data-book-id0="cibravohuerta@yahoo."
-                                data-book-id1="BRAVO CARLOS" data-book-id2="72560" data-book-id3="Transv 5 N 7"
-                                data-book-id4="650-960-22-45" data-book-id5="USER"><i class="fas fa-eye"></i></button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#updateModal" data-book-id0="cibravohuerta@yahoo."
-                                data-book-id1="BRAVO CARLOS" data-book-id2="72560" data-book-id3="Transv 5 N 7"
-                                data-book-id4="650-960-22-45" data-book-id5="USER"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal" data-book-id0="BRAVO CARLOS"><i
-                                    class="fas fa-minus-circle"></i></button>
-                        </td>
-                    </tr>
-
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>E-mail</th>
-                        <th>Nombre</th>
-                        <th>Dirección</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </tfoot>
-            </table>
-
-        </div>
-    </div>
-
-    <!-- Modal Create-->
-    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createModalLongTitle">Crear Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="c_email">E-mail</label>
-                            <input type="text" class="form-control" name="c_email" id="c_email"
-                                placeholder="E-mail...">
-                        </div>
-                        <div class="form-group">
-                            <label for="c_nombre">Nombre</label>
-                            <input type="text" class="form-control" name="c_nombre" id="c_nombre" placeholder="Nombre..">
-                        </div>
-                        <div class="form-group">
-                            <label for="c_password">Password</label>
-                            <input type="password" class="form-control" name="c_password" id="c_password"
-                                placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="c_direccion">Dirección</label>
-                            <input type="text" class="form-control" name="c_direccion" id="c_direccion"
-                                placeholder="Dirección...">
-                        </div>
-                        <div class="form-group">
-                            <label for="c_telefono">Teléfono</label>
-                            <input type="text" class="form-control" name="c_telefono" id="c_telefono"
-                                placeholder="Teléfono..">
-                        </div>
-                        <div class="form-group">
-                            <label for="c_rol">Rol</label>
-                            <select class="form-control" name="c_rol" id="c_rol">
-                                <option value=''>Seleccione Rol</option>
-                                <option value='ROOT'>ROOT</option>
-                                <option value='ADMIN'>ADMINISTRADOR</option>
-                                <option value='USER'>USUARIO</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal"
-                        onclick="executeSw('Creación Usuario')">Create</button>
-                </div>
+            <div class="form-group">
+                <label for="c_nombre">Nombre..</label>
+                <input
+                type="text"
+                class="form-control"
+                name="c_nombre"
+                id="c_nombre"
+                placeholder="Nombre.."
+                />
+            </div>
+            <div class="form-group">
+                <label for="c_password">Password..</label>
+                <input
+                type="password"
+                class="form-control"
+                name="c_password"
+                id="c_password"
+                placeholder="Password"
+                />
+            </div>
+            <div class="form-group">
+                <label for="c_direccion">Dirección</label>
+                <input
+                type="text"
+                class="form-control"
+                name="c_direccion"
+                id="c_direccion"
+                placeholder="Dirección..."
+                />
+            </div>
+            <div class="form-group">
+                <label for="c_telefono">Teléfono</label>
+                <input
+                type="text"
+                class="form-control"
+                name="c_telefono"
+                id="c_telefono"
+                placeholder="Teléfono.."
+                />
+            </div>
+            <div class="form-group">
+                <label for="c_rol">Rol</label>
+                <select class="form-control" name="c_rol" id="c_rol">
+                <option value="">Seleccione Rol</option>
+                <option value="1">ROOT</option>
+                <option value="2">ADMINISTRADOR</option>
+                <option value="3">USUARIO</option>
+                </select>
             </div>
         </div>
-    </div>
-    <!-- Modal View -->
-    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="viewModalLongTitle">Ver Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="v_email">E-mail</label>
-                            <input type="text" class="form-control" name="v_email" id="v_email"
-                                placeholder="E-mail..." readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="v_nombre">Nombre</label>
-                            <input type="text" class="form-control" name="v_nombre" id="v_nombre" placeholder="Nombre.." readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="v_password">Password</label>
-                            <input type="password" class="form-control" name="v_password" id="v_password"
-                                placeholder="Password" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="v_direccion">Dirección</label>
-                            <input type="text" class="form-control" name="v_direccion" id="v_direccion"
-                                placeholder="Dirección..." readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="v_telefono">Teléfono</label>
-                            <input type="text" class="form-control" name="v_telefono" id="v_telefono"
-                                placeholder="Teléfono.." readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="v_rol">Rol</label>
-                            <input type="text" class="form-control" name="v_rol" id="v_rol"
-                            placeholder="Rol.." readonly>                            
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
+            Close
+            </button>
+            <button type="submit" class="btn btn-success" data-dismiss="modal" id="btn_create_usuario" name="btn_create_usuario">
+            Create
+            </button>
         </div>
+    </form>
     </div>
+  </div>
+</div>
+<!-- Modal View -->
+<div
+  class="modal fade"
+  id="viewModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="viewModalTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewModalLongTitle">Ver Usuario</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="v_email">E-mail</label>
+            <input
+              type="text"
+              class="form-control"
+              name="v_email"
+              id="v_email"
+              placeholder="E-mail..."
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="v_nombre">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              name="v_nombre"
+              id="v_nombre"
+              placeholder="Nombre.."
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="v_password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="v_password"
+              id="v_password"
+              placeholder="Password"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="v_direccion">Dirección</label>
+            <input
+              type="text"
+              class="form-control"
+              name="v_direccion"
+              id="v_direccion"
+              placeholder="Dirección..."
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="v_telefono">Teléfono</label>
+            <input
+              type="text"
+              class="form-control"
+              name="v_telefono"
+              id="v_telefono"
+              placeholder="Teléfono.."
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="v_rol">Rol</label>
+            <input
+              type="text"
+              class="form-control"
+              name="v_rol"
+              id="v_rol"
+              placeholder="Rol.."
+              readonly
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Modal Update -->
-    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="updateModalLongTitle">Actualizar Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="u_email">E-mail</label>
-                            <input type="text" class="form-control" name="u_email" id="u_email"
-                                placeholder="E-mail...">
-                        </div>
-                        <div class="form-group">
-                            <label for="u_nombre">Nombre</label>
-                            <input type="text" class="form-control" name="u_nombre" id="u_nombre" placeholder="Nombre..">
-                        </div>
-                        <div class="form-group">
-                            <label for="u_password">Password</label>
-                            <input type="password" class="form-control" name="u_password" id="u_password"
-                                placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="u_direccion">Dirección</label>
-                            <input type="text" class="form-control" name="u_direccion" id="u_direccion"
-                                placeholder="Dirección...">
-                        </div>
-                        <div class="form-group">
-                            <label for="u_telefono">Teléfono</label>
-                            <input type="text" class="form-control" name="u_telefono" id="u_telefono"
-                                placeholder="Teléfono..">
-                        </div>
-                        <div class="form-group">
-                            <label for="u_rol">Rol</label>
-                            <select class="form-control" name="u_rol" id="u_rol">
-                                <option value=''>Seleccione Rol</option>
-                                <option value='ROOT'>ROOT</option>
-                                <option value='ADMIN'>ADMINISTRADOR</option>
-                                <option value='USER'>USUARIO</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal"
-                        onclick="executeSw('Actualizar Usuario')">Update</button>
-                </div>
-            </div>
+<!-- Modal Update -->
+<div
+  class="modal fade"
+  id="updateModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="updateModalTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLongTitle">
+          Actualizar Usuario
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="POST" action="/usuario/update">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="u_email">E-mail</label>
+            <input
+              type="text"
+              class="form-control"
+              name="u_email"
+              id="u_email"
+              placeholder="E-mail..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="u_nombre">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              name="u_nombre"
+              id="u_nombre"
+              placeholder="Nombre.."
+            />
+          </div>
+          <div class="form-group">
+            <label for="u_password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="u_password"
+              id="u_password"
+              placeholder="Password"
+            />
+          </div>
+          <div class="form-group">
+            <label for="u_direccion">Dirección</label>
+            <input
+              type="text"
+              class="form-control"
+              name="u_direccion"
+              id="u_direccion"
+              placeholder="Dirección..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="u_telefono">Teléfono</label>
+            <input
+              type="text"
+              class="form-control"
+              name="u_telefono"
+              id="u_telefono"
+              placeholder="Teléfono.."
+            />
+          </div>
+          <div class="form-group">
+            <label for="u_rol">Rol</label>
+            <select class="form-control" name="u_rol" id="u_rol">
+              <option value="">Seleccione Rol</option>
+              <option value="1">ROOT</option>
+              <option value="2">ADMINISTRADOR</option>
+              <option value="3">USUARIO</option>
+            </select>
+          </div>
         </div>
-    </div>
-
-    <!-- Modal Delete -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLongTitle">Inactivar Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="d_email">Email</label>
-                            <input type="text" class="form-control" name="d_email" id="d_email"
-                                placeholder="Email" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Esta seguro de inactivar este Usuario?</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Si</button>
-                </div>
-            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-success"
+            data-dismiss="modal"
+            onclick="executeSw('Actualizar Usuario')"
+          >
+            Update
+          </button>
         </div>
+      </form>
     </div>
+  </div>
+</div>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-        crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-        crossorigin="anonymous"></script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- Modal Delete -->
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteModalTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLongTitle">Inactivar Usuario</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="d_email">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              name="d_email"
+              id="d_email"
+              placeholder="Email"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label>Esta seguro de inactivar este Usuario?</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">
+          No
+        </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Si
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 
 
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+{% block javascript %}
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#example").DataTable();
+  });
 
+  function executeSw(title) {
+    Swal.fire(title, "La grabación se realizo satisfactoriamente!", "success");
+  }
 
+  $("#viewModal").on("show.bs.modal", function (e) {
+    var bookId0 = $(e.relatedTarget).data("book-id0");
+    var bookId1 = $(e.relatedTarget).data("book-id1");
+    var bookId2 = $(e.relatedTarget).data("book-id2");
+    var bookId3 = $(e.relatedTarget).data("book-id3");
+    var bookId4 = $(e.relatedTarget).data("book-id4");
+    var bookId5 = $(e.relatedTarget).data("book-id5");
+    $(e.currentTarget).find('input[name="v_email"]').val(bookId0);
+    $(e.currentTarget).find('input[name="v_nombre"]').val(bookId1);
+    $(e.currentTarget).find('input[name="v_password"]').val(bookId2);
+    $(e.currentTarget).find('input[name="v_direccion"]').val(bookId3);
+    $(e.currentTarget).find('input[name="v_telefono"]').val(bookId4);
+    $(e.currentTarget).find('input[name="v_rol"]').val(bookId5);
+  });
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
+  $("#updateModal").on("show.bs.modal", function (e) {
+    var bookId0 = $(e.relatedTarget).data("book-id0");
+    var bookId1 = $(e.relatedTarget).data("book-id1");
+    var bookId2 = $(e.relatedTarget).data("book-id2");
+    var bookId3 = $(e.relatedTarget).data("book-id3");
+    var bookId4 = $(e.relatedTarget).data("book-id4");
+    var bookId5 = $(e.relatedTarget).data("book-id5");
+    $(e.currentTarget).find('input[name="u_email"]').val(bookId0);
+    $(e.currentTarget).find('input[name="u_nombre"]').val(bookId1);
+    $(e.currentTarget).find('input[name="u_password"]').val(bookId2);
+    $(e.currentTarget).find('input[name="u_direccion"]').val(bookId3);
+    $(e.currentTarget).find('input[name="u_telefono"]').val(bookId4);
+    $(e.currentTarget).find('select[name="u_rol"]').val(bookId5);
+  });
 
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
+  $("#createModal").on("show.bs.modal", function (e) {
+    $(e.currentTarget).find('input[name="c_email"]').val("");
+    $(e.currentTarget).find('input[name="c_nombre"]').val("");
+    $(e.currentTarget).find('input[name="c_password"]').val("");
+    $(e.currentTarget).find('input[name="c_direccion"]').val("");
+    $(e.currentTarget).find('input[name="c_telefono"]').val("");
+    $(e.currentTarget).find('select[name="c_rol"]').val("");
+  });
 
-            $('#example').DataTable();
+  $("#deleteModal").on("show.bs.modal", function (e) {
+    var bookId0 = $(e.relatedTarget).data("book-id0");
+    $(e.currentTarget).find('input[name="d_email"]').val(bookId0);
+  });
 
+  $('#btn_create_usuario').click(function(){  
+    var c_email= $('#c_email').val();
+    var c_nombre = $('#c_nombre').val();  
+    var c_password = $('#c_password').val(); 
+    var c_direccion = $('#c_direccion').val();
+    var c_telefono = $('#c_telefono').val();
+    var c_rol = $('#c_rol').val();
 
-        });
-
-
-        function executeSw(title) {
-            Swal.fire(title, "La grabación se realizo satisfactoriamente!", "success");
-        }
-
-        $('#viewModal').on('show.bs.modal', function (e) {
-            var bookId0 = $(e.relatedTarget).data('book-id0');
-            var bookId1 = $(e.relatedTarget).data('book-id1');
-            var bookId2 = $(e.relatedTarget).data('book-id2');
-            var bookId3 = $(e.relatedTarget).data('book-id3');
-            var bookId4 = $(e.relatedTarget).data('book-id4');
-            var bookId5 = $(e.relatedTarget).data('book-id5');
-            $(e.currentTarget).find('input[name="v_email"]').val(bookId0);
-            $(e.currentTarget).find('input[name="v_nombre"]').val(bookId1);
-            $(e.currentTarget).find('input[name="v_password"]').val(bookId2);
-            $(e.currentTarget).find('input[name="v_direccion"]').val(bookId3);
-            $(e.currentTarget).find('input[name="v_telefono"]').val(bookId4);
-            $(e.currentTarget).find('input[name="v_rol"]').val(bookId5);
-        });
-
-        $('#updateModal').on('show.bs.modal', function (e) {
-            var bookId0 = $(e.relatedTarget).data('book-id0');
-            var bookId1 = $(e.relatedTarget).data('book-id1');
-            var bookId2 = $(e.relatedTarget).data('book-id2');
-            var bookId3 = $(e.relatedTarget).data('book-id3');
-            var bookId4 = $(e.relatedTarget).data('book-id4');
-            var bookId5 = $(e.relatedTarget).data('book-id5');
-            $(e.currentTarget).find('input[name="u_email"]').val(bookId0);
-            $(e.currentTarget).find('input[name="u_nombre"]').val(bookId1);
-            $(e.currentTarget).find('input[name="u_password"]').val(bookId2);
-            $(e.currentTarget).find('input[name="u_direccion"]').val(bookId3);
-            $(e.currentTarget).find('input[name="u_telefono"]').val(bookId4);
-            $(e.currentTarget).find('select[name="u_rol"]').val(bookId5);
-        });
-
-        $('#createModal').on('show.bs.modal', function (e) {
-            $(e.currentTarget).find('input[name="c_email"]').val('');
-            $(e.currentTarget).find('input[name="c_nombre"]').val('');
-            $(e.currentTarget).find('input[name="c_password"]').val('');
-            $(e.currentTarget).find('input[name="c_direccion"]').val('');
-            $(e.currentTarget).find('input[name="c_telefono"]').val('');
-            $(e.currentTarget).find('select[name="c_rol"]').val('');
-        });
-
-        $('#deleteModal').on('show.bs.modal', function (e) {
-            var bookId0 = $(e.relatedTarget).data('book-id0');
-            $(e.currentTarget).find('input[name="d_email"]').val(bookId0);
-        });
-
-    </script>
-</body>
-
-</html>
+    if(c_email != '' && c_password != '' && c_nombre != '')  
+    {  
+        $.ajax({  
+                url:"/signup",  
+                method:"POST",  
+                data: {
+                    email: c_email,
+                    nombre: c_nombre,
+                    password: c_password,
+                    direccion: c_direccion,
+                    telefono: c_telefono,
+                    rol: c_rol
+                },  
+                success:function(data)  
+                {  
+                    alert(data);  
+                    if(data == 'No-data')  
+                    {  
+                        alert("Invalid Email Or Password!");  
+                    }  
+                    else 
+                    {  
+                        $('#loginModal').hide();  
+                        location.reload();  
+                    }  
+                }  
+        });  
+    }  
+    else 
+    {  
+        alert("Both Fields are required");  
+    } 
+  })
+</script>
+{% endblock %}
