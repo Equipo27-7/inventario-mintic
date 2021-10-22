@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+            <div class="content-1">
+                <div id="top_x_div" style="width: 300px; height: 360px;"></div>
+                <div style="width: 200px;"></div>
+                <div id="piechart" style="width: 400px; height: 360px;"></div>
+            </div>
             <br><br>
             <h2>Productos Próximos al límite de inventario permitido</h2>
             <div class="line"></div>
@@ -558,4 +563,71 @@ $('#deleteModal').on('show.bs.modal', function (e) {
     chart.draw(data, options);
     }
 </script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['bar']});
+  google.charts.setOnLoadCallback(drawStuff);
+
+    function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+            ['Productos', 'Cantidad'],
+            ["Producto 1", 24],
+            ["Producto 2", 17],
+            ["Producto 3", 12],
+            ["Producto 4", 10],
+            ['Producto 5', 3]
+        ]);
+
+        var options = {
+            title: 'Productos con bajo inventario',
+            width: 300,
+            legend: { position: 'none' },
+            chart: { title: 'Productos con bajo inventario'},
+            bars: 'vertical', // Required for Material Bar Charts.
+            axes: {
+                x: {
+                    0: { side: 'bottom', label: 'Productos'} // Top x-axis.
+                },
+                y: {
+                    0: {side:'left', label: 'Cantidad'}
+                }
+            },
+            bar: { groupWidth: "60%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+    };
+</script>
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+        ['Proveedores', 'Cantidad de productos'],
+        ['Proveedor 1', 11],
+        ['Proveedor 2', 2],
+        ['Proveedor 3', 2],
+        ['Proveedor 4', 2],
+        ['Proveedor 5', 7]
+    ]);
+
+    var options = {
+        title: 'Proveedores con mayor inventario',
+        width: 300,
+        legend: { position: 'none' },
+        chart: { title: 'Productos con mayor inventario'}
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+    }
+</script>
+
 {% endblock %}

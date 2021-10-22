@@ -1,26 +1,31 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash, jsonify
+from flask_login import login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
 from . import db
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/login', methods=['POST'])
+@auth.route('/login', methods=['GET','POST'])
 def login():
-    email = request.form.get('email')
-    password = request.form.get('password')
-    # remember = True if request.form.get('remember') else False
-    print(email)
-    print(password)
-    user = User.query.filter_by(email=email).first()
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+        # remember = True if request.form.get('remember') else False
+        print(email)
+        print(password)
+        user = User.query.filter_by(email=email).first()
 
-    # check if the user actually exists
-    # take the user-supplied password, hash it, and compare it to the hashed password in the database
-    if not user or not check_password_hash(user.password, password):
-        return jsonify(
-            msg='Please check your login details and try again.',status=401,icon='error')
-    return jsonify(msg='Grant Access.',status=200, icon='success')
-
+        # check if the user actually exists
+        # take the user-supplied password, hash it, and compare it to the hashed password in the database
+        if not user or not check_password_hash(user.password, password):
+            return jsonify(
+                msg='Please check your login details and try again.',status=401,icon='error')
+        
+        login_user(user, remember=False)
+        return jsonify(msg='Grant Access.',status=200, icon='success')
+    if request.method == "GET":
+        return redirect(url_for('main.index'))
 
 @auth.route('/signup', methods=['POST'])
 def signup():
@@ -49,5 +54,7 @@ def signup():
     return redirect(url_for('auth.login'))
 
 @auth.route('/logout')
+@login_required
 def logout():
-    return 'Logout'
+    logout_user()
+    return redirect(url_for('main.index'))
