@@ -1,35 +1,44 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask import *
+import sqlite3
 from flask_login import LoginManager
+import secrets
 
-# init SQLAlchemy so we can use it later in our models
-db = SQLAlchemy()
+app = Flask(__name__) 
+"""
+app.config['SECRET_KEY'] = 'Nj5YZutuRytwkIq7QC3YJd7p1gQrH665SDyWSdVGRnvJXJpJ-DgHjA'
+login_manager = LoginManager(app)
+"""
 
-def create_app():
-    app = Flask(__name__)
+@app.route("/")  
+def index():
+    return render_template("index.html");  
 
-    app.config['SECRET_KEY'] = 'Nj5YZutuRytwkIq7QC3YJd7p1gQrH665SDyWSdVGRnvJXJpJ-DgHjA'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///inventario.db'
+@app.route("/dashboard")  
+def dashboard():  
+    con = sqlite3.connect("inventario.db")
+    con.row_factory = sqlite3.Row  
+    cur = con.cursor()  
+    cur.execute("select * from usuarios")  
+    rows = cur.fetchall()   
+    return render_template("dashboard.html",rows = rows);  
 
-    db.init_app(app)
+@app.route("/usuario")  
+def usuario():  
+    return render_template("usuario.html");  
 
-    login_manager = LoginManager()
-    login_manager.login_view = 'auth.login'
-    login_manager.init_app(app)
+@app.route("/proveedor")  
+def proveedor():  
+    return render_template("proveedor.html");  
 
-    from .models import User
+@app.route("/producto")  
+def producto():  
+    return render_template("producto.html");  
 
-    @login_manager.user_loader
-    def load_user(user_id):
-        # since the user_id is just the primary key of our user table, use it in the query for the user
-        return User.query.get(int(user_id))
+@app.route("/generate_key")  
+def generate_key():  
+    secret_key = secrets.token_urlsafe(40)
+    return secret_key;  
 
-    # blueprint for auth routes in our app
-    from .auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint)
 
-    # blueprint for non-auth parts of app
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
-
-    return app
+if __name__ == "__main__":  
+    app.run(debug = True)
